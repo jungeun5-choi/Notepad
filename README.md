@@ -51,4 +51,4 @@
 👨‍💻 조우진 - [Blog]() / [GitHub]()<br>
 👩‍💻 박서연 - [Blog]() / [GitHub]()<br>
 👩‍💻 서예린 - [Blog]() / [GitHub]()<br>
-👨‍💻 안정민 - [Blog]() / [GitHub]()<br>
+👨‍💻 안정민 - [Blog](https://velog.io/@symbol9550) / [GitHub](https://github.com/MI-Ryeon)<br>
