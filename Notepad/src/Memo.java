@@ -18,10 +18,17 @@ public class Memo {
         this.post = post;
         this.postTime = System.currentTimeMillis();
     }
-    public String geteditTime(){
+    public String geteditTime(){//시간 값 가져오기
         SimpleDateFormat timeFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
         String result = timeFormat.format(new Date(postTime));
         return result;
+    }
+
+    public String getUserName(){
+        return userName;
+    }
+    public String getPost(){
+        return post;
     }
     public boolean  updateConfirm(String password){
         if (this.password.equals(password)){
