@@ -13,9 +13,7 @@ public class MemoList {
         }
     }
 
-    public int getLength(){
-        return memoList.size();
-    }
+
 
 
     public void insert(MemoVO memoVO){
@@ -24,7 +22,9 @@ public class MemoList {
 
 
     //조우진 - 수정하기
-
+    public int getLength(){
+        return memoList.size();
+    }
     public MemoVO getMemoVO(int number){
         return memoList.get(number-1);
     }
