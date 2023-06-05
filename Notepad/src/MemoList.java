@@ -31,54 +31,63 @@ public class MemoList {
 
     public void Update() {
         System.out.print("수정할 메모의 번호를 입력하시오 : ");
-        int number = new Scanner(System.in).nextInt();
+        int number = sc.nextInt();
 
-        try{    // Arraylist의 크기보다 높은 값을 입력 했을 때 발생하는 오류에 대한 예외처리
-            if (number == memoList.get(number-1).getIdx()) {  // Arraylist의 크기는 0부터 시작하므로 1을 빼준다. 입력한 number가 getIdx로 불러온 값이 같으면 진행
-                System.out.print("비밀번호를 입력하시오 : ");
-                String password = sc.nextLine();
-                if(password.equals(memoList.get(number-1).getPassword())){  // 입력한 pass와 getPassword로 불러온 값이 같으면 진행
+        try {    // linkedlist의 크기보다 높은 값을 입력 했을 때 발생하는 오류에 대한 예외처리
+            if (number == memoList.get(number - 1).getIdx()) {  // linkedlist의 크기는 0부터 시작하므로 1을 빼준다. 입력한 number가 getIdx로 불러온 값이 같으면 진행
+                if (passwordInput(number)) {
                     System.out.print("새로운 메모를 입력하시오 : ");
-                    memoList.get(number-1).setMemo(sc.nextLine());
-                    memoList.get(number-1).setTime(LocalDateTime.now());
+                    memoList.get(number - 1).setMemo(sc.nextLine());
+                    memoList.get(number - 1).setTime(LocalDateTime.now());
                     System.out.println("수정이 완료되었습니다.");
-                } else{                                                 // 입력한 pass와 getPassword로 불러온 값이 다르면 진행
+                } else {                                                 // 입력한 pass와 getPassword로 불러온 값이 다르면 진행
                     System.out.println("비밀번호가 틀렸습니다.");
                 }
             }
-        } catch(IndexOutOfBoundsException e){   // 예외처리
+        } catch (IndexOutOfBoundsException e) {   // 예외처리
             System.out.println("없는 번호입니다.");
             Update();   // 재귀함수
         }
     }
+
     public void View() {    // 목록을 보여주는 메소드
         for (int i = memoList.size() - 1; i >= 0; i--) {
             System.out.println(memoList.get(i));
         }
     }
-    public void Delete(){
+
+    public void Delete() {
         System.out.print("삭제할 메모의 번호를 입력하시오 : ");
         int number = sc.nextInt();
-        sc.nextLine();  // 입력 버퍼를 지워주는 역할(비밀번호가 바로 틀렸다고 뜸)
 
-        try{    // Arraylist의 크기보다 높은 값을 입력 했을 때 발생하는 오류에 대한 예외처리
-            if (number == memoList.get(number-1).getIdx()) {  // Arraylist의 크기는 0부터 시작하므로 1을 빼준다. 입력한 number가 getIdx로 불러온 값이 같으면 진행
-                System.out.print("비밀번호를 입력하시오 : ");
-                String password = sc.nextLine();
-                if(password.equals(memoList.get(number-1).getPassword())){  // 입력한 pass와 getPassword로 불러온 값이 같으면 진행
-                    memoList.remove(number-1);
+        try {    // linkedlist의 크기보다 높은 값을 입력 했을 때 발생하는 오류에 대한 예외처리
+            if (number == memoList.get(number - 1).getIdx()) {  // linkedlist의 크기는 0부터 시작하므로 1을 빼준다. 입력한 number가 getIdx로 불러온 값이 같으면 진행
+                if (passwordInput(number)) {
+                    memoList.remove(number - 1);
                     System.out.println("삭제가 완료되었습니다.");
-                    for(int i = memoList.size()-1;i>=0;i--){
-                        memoList.get(i).setIdx(i+1);
+                    for (int i = memoList.size() - 1; i >= 0; i--) {
+                        memoList.get(i).setIdx(i + 1);
                     }
                     count--;    // 글이 삭제된 후 새 글이 입력될 때 idx가 기존 idx값에 이어서 1씩 증가할 수 있도록
-                } else{                                                 // 입력한 pass와 getPassword로 불러온 값이 다르면 진행
+                } else {
                     System.out.println("비밀번호가 틀렸습니다.");
                 }
             }
-        } catch(IndexOutOfBoundsException e){   // 예외처리
+        } catch (IndexOutOfBoundsException e) {   // 예외처리
             System.out.println("없는 번호입니다.");
             Delete();   // 재귀함수
         }
     }
+
+    private Boolean passwordInput(int index) {
+        System.out.print("비밀번호를 입력하시오 : ");
+        String pw = sc.nextLine();
+        sc.nextLine(); // 입력버퍼를 지워주는 역할
+        return pw.equals(memoList.get(index - 1).getPassword());
+    }
+
+    //    private int selectDeleteMemoInput(){
+//        System.out.print("삭제할 메모의 번호를 입력하시오 : ");
+//        int temp = sc.nextInt();
+//    }
 }
