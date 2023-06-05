@@ -16,6 +16,14 @@ public class MemoVO {
 
     // public void setIdx(int idx) { this.idx = idx; }
 
+    MemoVO() { }
+    MemoVO(String name, String password, String memo, LocalDateTime time) {
+        this.name = name;
+        this.password = password;
+        this.memo = memo;
+        this.time = time;
+    }
+
     public String getName() {
         return name;
     }

@@ -35,11 +35,13 @@ public class MemoList {
         // MemoVO vo = new MemoVO();
         */
 
+        MemoVO vo = new MemoVO(name, password, memo, time);
+
         // vo.setIdx(count++); // 번호
-        vo.setName(name);   // 이름
-        vo.setPassword(password);   // 비밀번호
-        vo.setMemo(memo);   // 메모 내용
-        vo.setTime(time);   // 현재시간
+        // vo.setName(name);   // 이름
+        // vo.setPassword(password);   // 비밀번호
+        // vo.setMemo(memo);   // 메모 내용
+        // vo.setTime(time);   // 현재시간
 
         memoList.add(vo);
     }
