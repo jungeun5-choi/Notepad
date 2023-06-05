@@ -71,7 +71,7 @@ public class MemoList {
                     for(int i = memoList.size()-1;i>=0;i--){
                         memoList.get(i).setIdx(i+1);
                     }
-                    count--;
+                    count--;    // 글이 삭제된 후 새 글이 입력될 때 idx가 기존 idx값에 이어서 1씩 증가할 수 있도록
                 } else{                                                 // 입력한 pass와 getPassword로 불러온 값이 다르면 진행
                     System.out.println("비밀번호가 틀렸습니다.");
                 }
