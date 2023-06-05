@@ -29,26 +29,26 @@ public class MemoList {
         memoList.add(vo);
     }
 
-    public void Update() {
-        System.out.print("수정할 메모의 번호를 입력하시오 : ");
-        int number = sc.nextInt();
-
-        try {    // linkedlist의 크기보다 높은 값을 입력 했을 때 발생하는 오류에 대한 예외처리
-            if (number == memoList.get(number - 1).getIdx()) {  // linkedlist의 크기는 0부터 시작하므로 1을 빼준다. 입력한 number가 getIdx로 불러온 값이 같으면 진행
-                if (passwordInput(number)) {
-                    System.out.print("새로운 메모를 입력하시오 : ");
-                    memoList.get(number - 1).setMemo(sc.nextLine());
-                    memoList.get(number - 1).setTime(LocalDateTime.now());
-                    System.out.println("수정이 완료되었습니다.");
-                } else {                                                 // 입력한 pass와 getPassword로 불러온 값이 다르면 진행
-                    System.out.println("비밀번호가 틀렸습니다.");
-                }
-            }
-        } catch (IndexOutOfBoundsException e) {   // 예외처리
-            System.out.println("없는 번호입니다.");
-            Update();   // 재귀함수
-        }
-    }
+//    public void Update() {
+//        System.out.print("수정할 메모의 번호를 입력하시오 : ");
+//        int number = sc.nextInt();
+//
+//        try {    // linkedlist의 크기보다 높은 값을 입력 했을 때 발생하는 오류에 대한 예외처리
+//            if (number == memoList.get(number - 1).getIdx()) {  // linkedlist의 크기는 0부터 시작하므로 1을 빼준다. 입력한 number가 getIdx로 불러온 값이 같으면 진행
+//                if (passwordInput(number)) {
+//                    System.out.print("새로운 메모를 입력하시오 : ");
+//                    memoList.get(number - 1).setMemo(sc.nextLine());
+//                    memoList.get(number - 1).setTime(LocalDateTime.now());
+//                    System.out.println("수정이 완료되었습니다.");
+//                } else {                                                 // 입력한 pass와 getPassword로 불러온 값이 다르면 진행
+//                    System.out.println("비밀번호가 틀렸습니다.");
+//                }
+//            }
+//        } catch (IndexOutOfBoundsException e) {   // 예외처리
+//            System.out.println("없는 번호입니다.");
+//            Update();   // 재귀함수
+//        }
+//    }
 
     public void View() {    // 목록을 보여주는 메소드
         for (int i = memoList.size() - 1; i >= 0; i--) {
@@ -90,4 +90,16 @@ public class MemoList {
 //        System.out.print("삭제할 메모의 번호를 입력하시오 : ");
 //        int temp = sc.nextInt();
 //    }
-}
+
+
+    //조우진 - 수정하기
+    public int getLength(){
+        return memoList.size();
+    }
+    public MemoVO getMemoVO(int number){
+        return memoList.get(number-1);
+    }
+    public void update(StringBuilder editText,int number) {
+        getMemoVO(number).setText(editText);
+        getMemoVO(number).setPostTime();
+    }
