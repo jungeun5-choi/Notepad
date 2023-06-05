@@ -38,7 +38,7 @@
 
 ## 프로젝트 진행 상태
 > 🚩 2023-06-05 `프로젝트 시작`<br>
-> 🚩 2023-06-05 `프로젝트 종료 (예정)`
+> 🚩 2023-06-05 `프로젝트 종료`
  
 
 ## 도움을 주신 분들
@@ -51,7 +51,7 @@
 
 ## Contact
 👩‍💻 최정은 - [Blog](https://velog.io/@temprmn) / [GitHub](https://github.com/jungeun5-choi/)<br>
-👨‍💻 조우진 - [Blog]() / [GitHub]()<br>
-👩‍💻 박서연 - [Blog]() / [GitHub]()<br>
-👩‍💻 서예린 - [Blog]() / [GitHub]()<br>
+👨‍💻 조우진 - [Blog]() / [GitHub](https://github.com/VVooJIN3)<br>
+👩‍💻 박서연 - [Blog]() / [GitHub](https://github.com/seoyeonpark99)<br>
+👩‍💻 서예린 - [Blog]() / [GitHub](https://github.com/yesrin)<br>
 👨‍💻 안정민 - [Blog](https://velog.io/@symbol9550) / [GitHub](https://github.com/MI-Ryeon)<br>
