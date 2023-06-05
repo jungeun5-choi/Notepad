@@ -10,7 +10,7 @@ public class Main {
 
         MemoVO memoVO = new MemoVO();
         MemoList memoList = new MemoList(memoVO);
-        ScreenPrint screenPrint = new ScreenPrint();
+        ScreenPrint screenPrint = new ScreenPrint(memoList);
 
         NotepadApp notepadApp = new NotepadApp(sc, memoVO, memoList, screenPrint);
 

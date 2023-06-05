@@ -125,10 +125,10 @@ public class MemoList {
         return pw.equals(memoList.get(index - 1).getPassword());
     }
 
-    //    private int selectDeleteMemoInput(){
-//        System.out.print("삭제할 메모의 번호를 입력하시오 : ");
-//        int temp = sc.nextInt();
-//    }
+    // private int selectDeleteMemoInput(){
+    //     System.out.print("삭제할 메모의 번호를 입력하시오 : ");
+    //     int temp = sc.nextInt();
+    // }
 
 
     //조우진 - 수정하기

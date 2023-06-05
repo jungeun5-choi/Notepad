@@ -51,7 +51,7 @@ public class MemoVO {
     // String.valueOf 메서드는 toString()메서드를 호출해 문자열 반환 > 모든 클래스는 Object 클래스를 기본으로 상속받고
     // Object 클래스에 toString 메서드를 가지고 있다.
     //public String toString(){ return idx +". "+name+" / "+password+" / \n"+memo+" /"+time; }
-    public String toString() { return name+" / "+ "****" +" / \n"+memo+" /"+time+"\n"; }
+    public String toString() { return name+" / "+ "****" +" /\n"+memo+"/ "+time+"\n"; }
 
 //
 //    public MemoVO(String userName, String password, StringBuilder text){

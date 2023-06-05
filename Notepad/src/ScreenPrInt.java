@@ -4,8 +4,12 @@ import java.util.List;
 import java.util.Scanner;
 
 public class ScreenPrint {
-    Scanner scanner = new Scanner(System.in);
 
+    MemoList memoList;
+
+    ScreenPrint(MemoList memoList) {
+        this.memoList = memoList;
+    }
 
     public void pWelcomeMsg(){
         System.out.println("안녕하세요");
@@ -40,10 +44,10 @@ public class ScreenPrint {
         String inputMomo = scanner.next();
     }*/
     public void pInputName() {
-        System.out.println("이름을 입력하세요");
+        System.out.printf("이름을 입력하세요: ");
     }
     public void pInputPassword(){
-        System.out.println("비밀번호를 입력해 주세요");
+        System.out.printf("비밀번호를 입력해 주세요: ");
         // Integer inputPassword = scanner.nextInt();
     }
     public void pInputMemo() {
@@ -58,13 +62,19 @@ public class ScreenPrint {
         // Integer inputReviseNumber = scanner.nextInt();
     }
     public void pNonReviseNumberMsg(){
-        System.out.println("수정할 글 번호가 존재하지 않습니다.");
+        System.out.printf("[※ 수정할 글 번호가 존재하지 않습니다.]\n\n");
+    }
+    public void pCompleteRevise() {
+        System.out.printf("[수정되었습니다.]\n\n");
     }
     public void pInputDeleteNumber(){
         System.out.println("삭제할 글 번호를 입력해 주세요");
     }
     public void pNonDeleteNumberMsg(){
-        System.out.println("삭제할 글 번호가 존재하지 않습니다.");
+        System.out.printf("[※ 삭제할 글 번호가 존재하지 않습니다.]\n\n");
+    }
+    public void pCompleteDelete() {
+        System.out.printf("[삭제되었습니다.]\n\n");
     }
 
     public void pSaveYnMsg(){
@@ -79,7 +89,21 @@ public class ScreenPrint {
         System.out.println("2.아니요");
     }
 
+    public void pMemoListIsEmpty() {
+        System.out.printf("[※ 작성한 메모가 없습니다.]\n\n");
+    }
 
+
+    // 메모 리스트 출력
+    public void viewMemoList() {
+
+        System.out.printf("\n");
+        System.out.println("[ Memo List ]");
+        // 메모 목록 조회
+        for(int index = 0; index < memoList.getLength(); index++) {
+            System.out.printf("%d. %s", index+1, memoList.getMemo(index));
+        }
+    }
 
 
 //    public void revised(List<Memo> memos){
