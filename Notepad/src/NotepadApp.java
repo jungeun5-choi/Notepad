@@ -1,31 +1,26 @@
 package Notepad.src;
 
-import java.util.Scanner;
+import java.util.*;
 
 public class NotepadApp {
 
     /* 필드 */
     Scanner sc;
 
+    MemoVO memoVO;
     MemoList memoList;
-    // 입력 (생성)
-    // 목록조회
-    // 수정
-    // 삭제
-    // 종료
-    // 화면 // ScreenPrint screenPrint;
+
+    ScreenPrint screenPrint;
 
     /* 생성자 */
-    public NotepadApp(Scanner sc, MemoList memoList) {
+    public NotepadApp(Scanner sc, MemoVO memoVo, MemoList memoList, ScreenPrint screenPrint) {
+
         this.sc = sc;
 
+        this.memoVO = memoVo;
         this.memoList = memoList;
-        // this.입력 = 입력;
-        // this.목록조회 = 목록조회;
-        // this.수정 = 수정;
-        // this.삭제 = 삭제;
-        // this.종료 = 종료;
-        // 화면 // this.screenPrint = screenPrint;
+
+        this.screenPrint = screenPrint;
     }
 
     /* 메서드 */
@@ -34,7 +29,11 @@ public class NotepadApp {
     public void startNotepadApp() {
         // processNotepadApp();
 
-        // screenPrint().최초화면();
+        // 출력
+        screenPrint.pWelcomeMsg();
+        screenPrint.pMenu();
+
+        // 입력
         selectMenuInput();
     }
 
@@ -69,48 +68,52 @@ public class NotepadApp {
         return sc.nextLine();
     }
     // 비밀번호
-    private String enterPasswordInput() {
-        return sc.nextLine();
-    }
-    // 메모
-    private String enterMemoInput() {
+   private String enterPasswordInput() {
         return sc.nextLine();
     }
 
-    // 1-2-2. 메모 저장 여부 선택/입력
-    private Boolean saveOrNotInput() {
-        return false;
+   public String enterMemoInput() {
+
+       ArrayList<String> textList = new ArrayList<>();
+       StringBuilder text = new StringBuilder();
+
+       while (sc.hasNextLine()) {
+           String word = sc.nextLine();
+           if (word.isEmpty()) {
+               break;
+           }
+           textList.add(word);
+       }
+
+       for (String item : textList) {
+           text.append(item).append("\n");
+       }
+
+       // StringBuilder -> String 변환
+       return text.toString();
+   }
+
+    // 1-2-2. yes or no 선택/입력
+    private int yesOrNoInput() {
+
+        return sc.nextInt();
     }
 
-    // 1-3-1. 메뉴로 되돌아가기
-    private void goBackToMenuInput() {
-
-    }
 
     // 1-4-1. 수정할 글 선택/입력
-    private int selectModifyMemoInput() {
-
-        int temp = 0;
-        return temp;
+    private int selectMemoNumberInput() {
+        return sc.nextInt() - 1;
     }
     // 1-4-2. 비밀번호 입력 -> 일치 여부 판별, (4) 삭제에서도 사용
-    private Boolean passwordInput(int index) {
+    private String passwordInput(int index) {
         // 비밀번호 입력
-        String pw = sc.nextLine();
+        String password = sc.nextLine();
 
-        // 비밀번호 일치여부 판별
-        /*
-        * if(memoList.get어쩌구(index).getPassword()) {
-        *
-        * }
-        * */
-
-        // 일치하면 true, 불일치면 false
-        return false;
+        return password;
     }
     // 1-4-3. 수정할 내용 입력
-    private void enterModifyInput() {
-
+    private String enterModifyInput() {
+        return enterMemoInput();
     }
 
     // 1-5-1. 삭제할 글 선택/입력
@@ -126,25 +129,149 @@ public class NotepadApp {
         return false;
     }
 
+    private void viewMemoList() {
+        // 메모 목록 조회
+        for(int index = 0; index < memoList.getLength(); index++) {
+            System.out.printf("%d. %s", index+1, memoList.getMemo(index));
+        }
+    }
+
     // 2. 실행
     // 2-1. 입력(생성) 실행
     private void processCreateMemo() {
 
+        String name, password, memo;
+
+        sc.nextLine();
+
+        // 이름 입력
+        screenPrint.pInputName();
+        name = enterNameInput();
+
+        // 비밀번호 입력
+        screenPrint.pInputPassword();
+        password = enterPasswordInput();
+
+        // 메모 입력
+        screenPrint.pInputMemo();
+        memo = enterMemoInput();
+
+
+        // Q. "저장하시겠습니까?"
+        screenPrint.pSaveYnMsg();
+        int save = yesOrNoInput();
+
+        switch (save) {
+            case 1: // 1. 저장함
+                {
+                    // 저장
+                    memoList.Insert(name,password, memo);
+                    screenPrint.pSavedMsg();
+
+                    // 메뉴로 돌아간다
+                    startNotepadApp();
+                }
+                break;
+            case 2: // 2. 저장 안 함
+                {
+                    // 최초 메뉴로 돌아감
+                    startNotepadApp();
+                }
+                break;
+        }
     }
+
     // 2-2. 목록조회 실행
     private void processViewMemoList() {
 
+        // 메뉴 목록 조회
+        viewMemoList();
+
+        System.out.println("메뉴로 되돌아 가시겠습니까?");
+        System.out.println("1. 예");
+
+        int selectReturn = yesOrNoInput();
+
+        switch (selectReturn) {
+            case 1: // 1. 돌아간다
+            {
+                // 메인 메뉴
+                startNotepadApp();
+                break;
+            }
+        }
     }
     // 2-3. 수정 실행
     private void processModifyMemo() {
+        // 메뉴 목록 조회
+        viewMemoList();
 
+        // 수정할 글을 선택하세요
+        screenPrint.pInputReviseNumber();
+        int index = selectMemoNumberInput();
+        Boolean correct = false;
+
+        while(!correct) {
+
+            // -> 비밀번호 입력
+            screenPrint.pInputPassword();
+            String password = passwordInput(index);
+
+            // 비밀번호 판별
+            correct = memoList.passwordConfirm(password, index);
+
+            if (correct) { // 1. 비밀번호 일치
+                // 1 수정내용 입력
+                System.out.println("수정할 내용을 입력하세요.");
+                String newMemo = enterModifyInput();
+
+                // 2 업데이트
+                memoList.update(newMemo, index);
+
+                // 3 메뉴로 되돌아감
+                startNotepadApp();
+                break;
+
+            } else { // 2. 비밀번호 불일치
+                // 불일치
+                screenPrint.pNonPasswordMsg();
+            }
+        }
     }
     // 2-4. 삭제 실행
     private void processDeleteMemo() {
+        // 메뉴 목록 조회
+        viewMemoList();
 
+        // 삭제할 글을 선택하세요
+        screenPrint.pInputDeleteNumber();
+        int index = selectMemoNumberInput();
+        Boolean correct = false;
+
+        while(!correct) {
+            // -> 비밀번호 입력
+            screenPrint.pInputPassword();
+            String password = passwordInput(index);
+
+            // 비밀번호 판별
+            correct = memoList.passwordConfirm(password, index);
+
+            if (correct) { // 1. 비밀번호 일치
+                // 1 삭제
+                memoList.deleteMemo(index);
+
+                // 2 메뉴로 되돌아감
+                startNotepadApp();
+                break;
+
+            } else { // 2. 비밀번호 불일치
+                // 불일치
+                screenPrint.pNonPasswordMsg();
+            }
+        }
     }
     // 2-5. 종료 실행
     private void processQuit() {
-
+        System.exit(0);
     }
 }

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 package Notepad.src;
 
 import java.util.Scanner;
@@ -8,8 +7,15 @@ public class Main {
 
         // 객체 생성
         Scanner sc = new Scanner(System.in);
-        MemoList memoList = new MemoList();
-        NotepadApp notepadApp = new NotepadApp(sc, memoList);
+
+        MemoVO memoVO = new MemoVO();
+        MemoList memoList = new MemoList(memoVO);
+        ScreenPrint screenPrint = new ScreenPrint();
+
+        NotepadApp notepadApp = new NotepadApp(sc, memoVO, memoList, screenPrint);
+
+        // String temp = notepadApp.enterMemoInput();
+        // System.out.printf("%s", temp);
 
         // 시작
         notepadApp.startNotepadApp();
@@ -39,7 +45,7 @@ public class Main {
 //>>>>>>> insert-jeongmin
     }
 }
-=======
+
 //import java.util.ArrayList;
 //import java.util.List;
 //import java.util.Scanner;

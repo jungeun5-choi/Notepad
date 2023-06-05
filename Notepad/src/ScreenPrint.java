@@ -3,12 +3,21 @@ package Notepad.src;
 import java.util.List;
 import java.util.Scanner;
 
-public class ScreenPrInt {
+public class ScreenPrint {
     Scanner scanner = new Scanner(System.in);
+
+
     public void pWelcomeMsg(){
         System.out.println("안녕하세요");
         System.out.println("Notepad에 오신것을 환영합니다");
     }
+
+    public void pMenu() {
+        System.out.println("--------------------------------------------");
+        System.out.println("1. 입력, 2. 목록 보기, 3. 수정, 4. 삭제, 5. 종료");
+        System.out.println("--------------------------------------------");
+    }
+
     public void pEndMsg(){
         System.out.println("Notepad가 종료되었습니다.");
         System.out.println("이용해주셔서 감사합니다.");
@@ -16,13 +25,11 @@ public class ScreenPrInt {
     public void pSavedMsg(){
         System.out.println("저장되었습니다.");
     }
-    public void pSevisedMsg(){
-        System.out.println("수정되었습니다");
-    }
+    public void pSevisedMsg(){ System.out.println("수정되었습니다"); }
     public void pDeltedMsg(){
         System.out.println("삭제되었습니다.");
     }
-    public void pInputMemo() {
+    /*public void pInputMemo() {
         System.out.println("이름을 입력하세요");
         String inputName = scanner.next();
 
@@ -31,10 +38,16 @@ public class ScreenPrInt {
 
         System.out.println("메모를 입력하세요");
         String inputMomo = scanner.next();
+    }*/
+    public void pInputName() {
+        System.out.println("이름을 입력하세요");
     }
     public void pInputPassword(){
         System.out.println("비밀번호를 입력해 주세요");
-        Integer inputPassword = scanner.nextInt();
+        // Integer inputPassword = scanner.nextInt();
+    }
+    public void pInputMemo() {
+        System.out.println("메모를 입력하세요");
     }
 
     public void pNonPasswordMsg(){
@@ -42,11 +55,24 @@ public class ScreenPrInt {
     }
     public void pInputReviseNumber(){
         System.out.println("수정할 글 번호를 입력해 주세요");
-        Integer inputReviseNumber = scanner.nextInt();
+        // Integer inputReviseNumber = scanner.nextInt();
     }
-    public void pNonNumberMsg(){
+    public void pNonReviseNumberMsg(){
         System.out.println("수정할 글 번호가 존재하지 않습니다.");
     }
+    public void pInputDeleteNumber(){
+        System.out.println("삭제할 글 번호를 입력해 주세요");
+    }
+    public void pNonDeleteNumberMsg(){
+        System.out.println("삭제할 글 번호가 존재하지 않습니다.");
+    }
+
+    public void pSaveYnMsg(){
+        System.out.println("저장하시겠습니까?");
+        System.out.println("1.예");
+        System.out.println("2.아니요");
+    }
+
     public void pReviseYnMsg(){
         System.out.println("수정하시겠습니까?");
         System.out.println("1.예");
