@@ -3,7 +3,7 @@ import java.util.Date;
 import java.util.LinkedList;
 
 public class MemoList {
-    LinkedList<MemoVO> memoList = new LinkedList<MemoVO>();
+    private LinkedList<MemoVO> memoList = new LinkedList<MemoVO>();
 
     public void getMemoList(){//메모 전체 조회
         for(MemoVO memo : memoList){
@@ -13,6 +13,9 @@ public class MemoList {
         }
     }
 
+    public int getLength(){
+        return memoList.size();
+    }
     public MemoVO getMemoVO(int number){
         return memoList.get(number-1);
     }

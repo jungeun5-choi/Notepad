@@ -57,4 +57,6 @@ public class MemoVO {
         System.out.println("작성시간 :"+this.getTime());
         System.out.print("작성 내용 :\n" +this.getText());
     }
+
+
 }
