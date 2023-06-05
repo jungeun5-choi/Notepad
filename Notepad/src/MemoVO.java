@@ -36,22 +36,24 @@ public class MemoVO {
         return text;
     }
 
-    public boolean passwordConfirm(String password){
-        if (this.password.equals(password)){
-            return true;
-        }
-        return false;
-    }
-    public void setText(StringBuilder editText){
-        this.text = editText;
-    }
-
     public void getMemo(){
         System.out.println("글번호 :" + this.getMemoNum());
         System.out.println("작성자 :" + this.getUserName());
         System.out.println("작성시간 :"+this.getTime());
         System.out.print("작성 내용 :\n" +this.getText());
     }
+    //조우진 수정기능
+    public void setText(StringBuilder editText){
+        this.text = editText;
+    }
+    public boolean passwordConfirm(String password){
+        if (this.password.equals(password)){
+            return true;
+        }
+        return false;
+    }
+
+
 
 
 }

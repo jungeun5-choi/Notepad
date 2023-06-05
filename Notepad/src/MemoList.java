@@ -16,9 +16,7 @@ public class MemoList {
     public int getLength(){
         return memoList.size();
     }
-    public MemoVO getMemoVO(int number){
-        return memoList.get(number-1);
-    }
+
 
     public void insert(MemoVO memoVO){
         memoList.add(memoVO);
@@ -26,6 +24,10 @@ public class MemoList {
 
 
     //조우진 - 수정하기
+
+    public MemoVO getMemoVO(int number){
+        return memoList.get(number-1);
+    }
     public void update(StringBuilder editText,int number) {
         getMemoVO(number).setText(editText);
         getMemoVO(number).setPostTime();
