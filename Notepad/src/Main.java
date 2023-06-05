@@ -62,19 +62,25 @@ public class Main {
                     }
                     break;
                 }
+                //조우진 구현기능 - 수정하기
                 case 3: {
                     System.out.println("< 메모 수정하기 >");
                     System.out.println("수정할 글번호를 입력하세요.");
                     int postNum = sc.nextInt();
                     sc.nextLine();
+                    if(memoList.getLength() < postNum) {
+                        System.out.println("존재하지 않는 글번호입니다.");
+                        break;
+                    }
                     System.out.println("수정할 메모장");
+
                     MemoVO targetMemo = memoList.getMemoVO(postNum);
-                    targetMemo.getMemo();
+                    targetMemo.getMemo(); //내용 전체 조회
                     System.out.println("비밀번호를 입력하세요.");
                     String targetPassword;
                     targetPassword = sc.nextLine();
                     if (targetMemo.passwordConfirm(targetPassword)) {
-                        System.out.println("메모를 다시 입력해주세요.");
+                        System.out.println("메모를 입력해주세요.");
                         ArrayList<String> textList = new ArrayList<>();
                         StringBuilder text = new StringBuilder();
                         while (sc.hasNextLine()) {

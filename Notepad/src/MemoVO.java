@@ -35,15 +35,10 @@ public class MemoVO {
     public StringBuilder getText(){
         return text;
     }
+
     public boolean passwordConfirm(String password){
         if (this.password.equals(password)){
-//            System.out.println("수정할 내용을 작성하세요.");
-//            setpostTime();
-//            setPost("내용");
             return true;
-        }
-        else{
-//            System.out.println("비밀번호가 틀립니다.");\
         }
         return false;
     }
